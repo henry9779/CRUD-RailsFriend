@@ -6,6 +6,7 @@
       <th class="table-dark">E-mail</th>
       <th class="table-dark">Phone</th>
       <th class="table-dark">Twitter</th>
+      <th class="table-dark">User ID</th>
       <th class="table-dark" colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= friend.email %></td>
         <td><%= friend.phone %></td>
         <td><%= friend.twitter %></td>
+        <td><%= friend.user_id %></td>
         <td><%= link_to 'Show', friend, class: 'btn btn-secondary' %></td>
         <td>
           <%= link_to 'Edit', edit_friend_path(friend), class: 'btn btn-success' %>
