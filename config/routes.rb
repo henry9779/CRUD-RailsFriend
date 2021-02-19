@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'home#index'
+  root 'friends#index'
   get 'home/about'
   resources :friends
 end

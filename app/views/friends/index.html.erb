@@ -1,42 +1,44 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th class="table-dark">Frist Name</th>
-      <th class="table-dark">Last Name</th>
-      <th class="table-dark">E-mail</th>
-      <th class="table-dark">Phone</th>
-      <th class="table-dark">Twitter</th>
-      <th class="table-dark">User ID</th>
-      <th class="table-dark" colspan="3"></th>
-    </tr>
-  </thead>
+<% if user_signed_in? %>
 
-  <tbody>
-    <% @friends.each do |friend| %>
-      <% if friend.user == current_user %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= friend.frist_name %></td>
-        <td><%= friend.last_name %></td>
-        <td><%= friend.email %></td>
-        <td><%= friend.phone %></td>
-        <td><%= friend.twitter %></td>
-        <td><%= friend.user_id %></td>
-        <td><%= link_to 'Show', friend, class: 'btn btn-secondary' %></td>
-        <td>
-          <%= link_to 'Edit', edit_friend_path(friend), class: 'btn btn-success' %>
-        </td>
-        <td>
-          <%= link_to 'Destroy', friend,
-          method: :delete,
-          data: { confirm: 'Are you sure?' },
-          class: 'btn btn-outline-danger' %>
-        </td>
+        <th class="table-dark">Name</th>
+        <th class="table-dark">E-mail</th>
+        <th class="table-dark">Phone</th>
+        <th class="table-dark">Twitter</th>
+        <th class="table-dark"></th>
       </tr>
+    </thead>
+
+    <tbody>
+      <% @friends.each do |friend| %>
+        <% if friend.user == current_user %>
+        <tr>
+          <td>
+            <%= link_to friend.frist_name + ' ' + friend.last_name, friend %>
+          </td>
+          <td><%= friend.email %></td>
+          <td><%= friend.phone %></td>
+          <td><%= friend.twitter %></td>
+          <td>
+            <%= link_to 'Destroy', friend,
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-outline-danger btn-sm' %>
+          </td>
+        </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Friend', new_friend_path, class: 'btn btn-secondary' %>
+  <%= link_to 'New Friend', new_friend_path, class: 'btn btn-secondary' %>
+
+  <% else %>
+
+    <h1>Hello, Make Friend !!</h1>
+
+<% end %>
